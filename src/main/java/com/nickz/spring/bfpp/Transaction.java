@@ -1,2 +1,11 @@
-package com.nickz.spring.bfpp;public @interface Transaction {
+package com.nickz.spring.bfpp;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Transaction {
 }

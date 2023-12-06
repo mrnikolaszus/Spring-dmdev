@@ -1,9 +1,9 @@
-package com.nickz.spring.service.integration.service;
+package com.nickz.spring.integration.service;
 
 import com.nickz.spring.config.DatabaseProperties;
 import com.nickz.spring.dto.CompanyReadDTO;
+import com.nickz.spring.integration.annotation.IT;
 import com.nickz.spring.service.CompanyService;
-import com.nickz.spring.service.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

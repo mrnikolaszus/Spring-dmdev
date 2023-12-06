@@ -1,4 +1,4 @@
-package com.javarush;
+package com.nickz.spring;
 
 public class Main {
     public static void main(String[] args) {

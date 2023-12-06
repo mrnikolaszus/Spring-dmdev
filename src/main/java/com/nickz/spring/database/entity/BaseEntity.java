@@ -1,2 +1,10 @@
-package com.nickz.spring.database.entity;public class BaseEntity {
+package com.nickz.spring.database.entity;
+
+import java.io.Serializable;
+
+public interface BaseEntity<T extends Serializable> {
+
+    T getId();
+
+    void setId(T id);
 }

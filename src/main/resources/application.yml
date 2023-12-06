@@ -4,6 +4,10 @@ db:
   driver: PostgresDriver
   url: postgres:5432
   hosts: localhost,127.0.0.1
+  properties:
+    first: 123
+    second: 567
+    third.value: Third
   pool:
     size: 12
     timeout: 10
@@ -14,4 +18,28 @@ db:
       timeout: 2
     - size: 3
       timeout: 3
-#spring.profiles.active:qa
+
+spring.profiles.active: qa
+
+logging:
+  level:
+    root: INFO
+    com.nickz.spring.database.pool.ConnectionPool: INFO
+  file:
+    name: logs.log
+    path: /
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: Wcwcwc123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl:
+          auto: validate
+

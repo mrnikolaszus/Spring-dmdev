@@ -1,9 +1,10 @@
-package com.nickz.spring.service;
+package com.nickz.spring;
 
 import com.nickz.spring.database.entity.Company;
-import com.nickz.spring.database.repository.CrudRepository;
+import com.nickz.spring.database.repository.CompanyRepository;
 import com.nickz.spring.dto.CompanyReadDTO;
 import com.nickz.spring.listener.EntityEvent;
+import com.nickz.spring.service.CompanyService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
+import java.util.Collections;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +24,7 @@ class CompanyServiceTest {
 
     private static final Integer COMPANY_ID =1;
     @Mock
-    private CrudRepository<Integer, Company> companyRepository;
+    private CompanyRepository companyRepository;
     @Mock
     private UserService userService;
     @Mock
@@ -33,8 +35,8 @@ class CompanyServiceTest {
 
     @Test
     void findById() {
-        Mockito.doReturn(Optional.of(new Company(COMPANY_ID)))
-                .when(companyRepository).findByID(COMPANY_ID);
+        Mockito.doReturn(Optional.of(new Company(COMPANY_ID, null, Collections.emptyMap())))
+                .when(companyRepository).findById(COMPANY_ID);
 
         var actualResult = companyService.findById(COMPANY_ID);
 

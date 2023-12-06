@@ -1,8 +1,6 @@
-package com.nickz.spring.service;
+package com.nickz.spring;
 
-import com.nickz.spring.database.entity.Company;
 import com.nickz.spring.database.repository.CompanyRepository;
-import com.nickz.spring.database.repository.CrudRepository;
 import com.nickz.spring.database.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final CrudRepository<Integer, Company> companyRepository;
+    private final CompanyRepository companyRepository;
 
 
 }
