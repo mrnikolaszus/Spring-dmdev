@@ -1,12 +1,17 @@
 package com.nickz.spring.database.entity;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedEntityGraph(name = "User.company",
+        attributeNodes = @NamedAttributeNode("company"))
 @Data
 @ToString(exclude = "userChats")
 @EqualsAndHashCode(of = "username")
@@ -15,7 +20,8 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "users")
-public class User  implements BaseEntity<Long>{
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+public class User extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,11 +44,10 @@ public class User  implements BaseEntity<Long>{
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @NotAudited
     @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<UserChat> userChats = new ArrayList<>();
-
-
 
 
 }

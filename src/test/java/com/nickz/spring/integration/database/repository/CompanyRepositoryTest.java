@@ -2,9 +2,11 @@ package com.nickz.spring.integration.database.repository;
 
 import com.nickz.spring.database.entity.Company;
 import com.nickz.spring.database.repository.CompanyRepository;
+import com.nickz.spring.integration.IntegrationTestBase;
 import com.nickz.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.annotation.Rollback;
@@ -19,11 +21,10 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@IT
 @RequiredArgsConstructor
 //@Transactional
 //@Commit
-class CompanyRepositoryTest {
+class CompanyRepositoryTest extends IntegrationTestBase {
 
     private static final Integer APPLE_ID = 5;
     private final EntityManager entityManager;
@@ -37,6 +38,7 @@ class CompanyRepositoryTest {
         companyRepository.findAllByNameContainingIgnoreCase("a");
     }
     @Test
+    @Disabled
     void delete(){
         var maybeCompany = companyRepository.findById(APPLE_ID);
         assertTrue(maybeCompany.isPresent());

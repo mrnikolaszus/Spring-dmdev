@@ -25,6 +25,10 @@ logging:
   level:
     root: INFO
     com.nickz.spring.database.pool.ConnectionPool: INFO
+    org:
+      springframework:
+        jdbc:
+          core: TRACE
   file:
     name: logs.log
     path: /
@@ -38,6 +42,7 @@ spring:
   jpa:
     properties:
       hibernate:
+        batch_size: 50
         show_sql: true
         format_sql: true
         hbm2ddl:
